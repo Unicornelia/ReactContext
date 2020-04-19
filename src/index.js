@@ -25,7 +25,7 @@ class Root extends Component {
   render() {
     return this.state.currentUser ? (
       <UserContext.Provider value={this.state.currentUser}>
-        <App onLogout={this.handleLogout}/>
+        <App currentUser={this.state.currentUser} onLogout={this.handleLogout}/>
       </UserContext.Provider>
     ) : (
       <LoginPage onLogin={this.handleLogin}/>
