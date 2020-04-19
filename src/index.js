@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from "react-dom";
 import LoginPage from './LoginPage';
-import MainPage from './MainPage';
+import App from './App'
 import UserContext from './UserContext';
 import { FAKE_USER } from './api';
 import "./index.css";
@@ -11,7 +11,7 @@ import * as serviceWorker from "./serviceWorker";
 
 class Root extends Component {
   state = {
-    currentUser = FAKE_USER
+    currentUser: FAKE_USER
   };
 
   handleLogin = user => {
@@ -24,8 +24,8 @@ class Root extends Component {
 
   render() {
     return this.state.currentUser ? (
-      <UserContext.Provider value={{this.state.currentUser}}>
-        <MainPage onLogout={this.handleLogout}/>
+      <UserContext.Provider value={this.state.currentUser}>
+        <App onLogout={this.handleLogout}/>
       </UserContext.Provider>
     ) : (
       <LoginPage onLogin={this.handleLogin}/>
