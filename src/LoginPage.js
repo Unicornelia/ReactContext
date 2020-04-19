@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { login } from './api'
 
 class LoginPage extends Component {
   state = {
