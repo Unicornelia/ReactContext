@@ -3,7 +3,7 @@ export const FAKE_USER = {
   lastName: "Schneider",
   username: "kori",
   avatar:
-    "https://www.gravatar.com/avatar/5c3dd2d257ff0e14dbd2583485dbd44b?s=32"
+    "https://secure.gravatar.com/avatar/acf8586871cc14580be973efd69e1640?s=144"
 };
 
 export const login = (username, password) => {
