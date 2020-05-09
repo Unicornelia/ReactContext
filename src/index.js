@@ -11,14 +11,14 @@ import * as serviceWorker from "./serviceWorker";
 
 class Root extends Component {
   state = {
-    currentUser: FAKE_USER
+    currentUser: null
   };
 
   handleLogin = user => {
     this.setState({currentUser: user})
   }
 
-  handleLogout = user => {
+  handleLogout = () => {
     this.setState({currentUser: null})
   }
 
