@@ -3,10 +3,10 @@ import './App.css';
 import Header from './Header'
 import MessageList from './MessageList'
 
-const App = ({onLogout}) => {
+const App = () => {
   return (
     <main>
-      <Header onLogout={onLogout} />
+      <Header />
       <MessageList />
     </main>
   );

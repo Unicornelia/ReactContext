@@ -15,20 +15,29 @@ class Root extends Component {
   };
 
   handleLogin = user => {
-    this.setState({currentUser: user})
+    this.setState({ currentUser: user })
   }
 
   handleLogout = () => {
-    this.setState({currentUser: null})
+    this.setState({ currentUser: null })
   }
 
   render() {
-    return this.state.currentUser ? (
-      <UserContext.Provider value={this.state.currentUser}>
-        <App currentUser={this.state.currentUser} onLogout={this.handleLogout}/>
+    return (
+      <UserContext.Provider
+        value={{
+          user: this.state.currentUser,
+          onLogin: this.handleLogin,
+          onLogout: this.handleLogout
+        }}
+      >
+
+        {this.state.currentUser ? (
+          <App />
+        ) : (
+          <LoginPage />
+        )}
       </UserContext.Provider>
-    ) : (
-      <LoginPage onLogin={this.handleLogin}/>
     )
   }
 }
