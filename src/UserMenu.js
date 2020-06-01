@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import UserContext from "./UserContext";
+import {UserConsumer} from "./UserContext";
 
 class UserMenu extends Component {
   state = {
@@ -32,7 +32,7 @@ class UserMenu extends Component {
 
   render() {
     return (
-      <UserContext.Consumer>
+      <UserConsumer>
         {({ user, onLogout }) => (
           <div className="UserMenu">
             <img
@@ -49,7 +49,7 @@ class UserMenu extends Component {
             )}
           </div>
         )}
-      </UserContext.Consumer>
+      </UserConsumer>
     );
   }
 }

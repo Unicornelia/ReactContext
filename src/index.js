@@ -1,46 +1,21 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import LoginPage from './LoginPage';
-import App from './App'
-import UserContext from './UserContext';
-import { FAKE_USER } from './api';
+import LoginPage from "./LoginPage";
+import App from "./App";
+import { UserProvider, UserConsumer } from "./UserContext";
 import "./index.css";
 
 import * as serviceWorker from "./serviceWorker";
 
-
-class Root extends Component {
-  state = {
-    currentUser: null
-  };
-
-  handleLogin = user => {
-    this.setState({ currentUser: user })
-  }
-
-  handleLogout = () => {
-    this.setState({ currentUser: null })
-  }
-
-  render() {
-    return (
-      <UserContext.Provider
-        value={{
-          user: this.state.currentUser,
-          onLogin: this.handleLogin,
-          onLogout: this.handleLogout
-        }}
-      >
-
-        {this.state.currentUser ? (
-          <App />
-        ) : (
-          <LoginPage />
-        )}
-      </UserContext.Provider>
-    )
-  }
-}
+const Root = () => {
+  return (
+    <UserProvider>
+      <UserConsumer>
+        {({ user }) => (user ? <App /> : <LoginPage />)}
+      </UserConsumer>
+    </UserProvider>
+  );
+};
 
 ReactDOM.render(<Root />, document.querySelector("#root"));
 

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { login } from "./api";
-import UserContext from "./UserContext";
+import {UserConsumer} from "./UserContext";
 
 class LoginPage extends Component {
   state = {
@@ -31,7 +31,7 @@ class LoginPage extends Component {
     const { username, password, error, loading } = this.state;
 
     return (
-      <UserContext.Consumer>
+      <UserConsumer>
         {({ onLogin }) => (
           <div className="LoginPage">
             <form onSubmit={e => this.handleSubmit(e, onLogin)}>
@@ -59,7 +59,7 @@ class LoginPage extends Component {
             </form>
           </div>
         )}
-      </UserContext.Consumer>
+      </UserConsumer>
     );
   }
 }
