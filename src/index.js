@@ -9,15 +9,18 @@ import * as serviceWorker from "./serviceWorker";
 
 const Root = () => {
   return (
-    <UserProvider>
-      <UserConsumer>
-        {({ user }) => (user ? <App /> : <LoginPage />)}
-      </UserConsumer>
-    </UserProvider>
+    <UserConsumer>
+      {({ user }) => (user ? <App /> : <LoginPage />)}
+    </UserConsumer>
   );
 };
 
-ReactDOM.render(<Root />, document.querySelector("#root"));
+ReactDOM.render(
+  <UserProvider>
+    <Root />
+  </UserProvider>,
+  document.querySelector("#root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
